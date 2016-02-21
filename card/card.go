@@ -28,16 +28,4 @@ func createHeader(headerChars []byte, width int, rnd utils.Randomer) []byte {
 
 	}
 	return headerChars
-	/*
-	   grid = new char[HEIGHT][WIDTH];
-	   Random random = new Random(number);
-	   char[] headerChars = HEADER_CHARS.toCharArray();
-	   shuffle(headerChars, random);
-	   if (headerChars.length > WIDTH) {
-	       char[] tmp = headerChars;
-	       headerChars = new char[WIDTH];
-	       System.arraycopy(tmp, 0, headerChars, 0, WIDTH);
-	   }
-	   grid[0] = headerChars;
-	*/
 }

@@ -8,12 +8,19 @@ import (
 
 // Test createHeader function.
 func TestcreateHeader(t *testing.T) {
-	headerChars := []byte("abcde")
-	expected := []byte("eabcd")
+	cases := []struct {
+		input, expected []byte
+	}{
+		{[]byte("abcde"), []byte("eabcd")},
+		{[]byte("abcdefgh"), []byte("habcd")},
+	}
 	prg := new(mockRandNum)
-	got := createHeader(headerChars, 5, prg)
-	if bytes.Compare(got, expected) != 0 {
-		t.Error("Incorrect array returned. Got:", got, "expected:", expected)
+
+	for _, c := range cases {
+		got := createHeader(c.input, 5, prg)
+		if bytes.Compare(got, c.expected) != 0 {
+			t.Error("Incorrect array returned. Got:", got, "expected:", c.expected)
+		}
 	}
 }
 
